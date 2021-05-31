@@ -1,8 +1,5 @@
 import { Component, OnInit , OnDestroy } from '@angular/core';
-import { AppareilService } from './services/appareil.service';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/Rx';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription, interval} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +10,12 @@ export class AppComponent implements OnInit , OnDestroy{
 	secondes : number;
 	counterSubscription : Subscription;
   constructor(){
-  	
+
   }
 
   ngOnInit(){
   	//definir une observable
-  	const counter = Observable.interval(1000);
+  	const counter = interval(1000);
   	//definir un observeur
   	this.counterSubscription = counter.subscribe(
   		(value : number)=>{

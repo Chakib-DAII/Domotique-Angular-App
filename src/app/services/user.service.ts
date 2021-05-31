@@ -1,38 +1,36 @@
 import { User } from "../models/user.model";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 import{ HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserService{
 	private users : User[] = [
+    {
+      firstName : 'user',
+      lastName : 'user',
+      email : 'user@mail.com',
+      drinkPreference : 'Coke',
+      hobbies :[
+        'coder',
+        'reading'
+      ]
+    },
 		{
-		firstName : 'chakib',
-		lastName : 'DAII',
-		email : 'chakib@DAII.com',
-		drinkPreference : 'Beer',
-		hobbies :[
-		'coder',
-		'reading'
-		]
-
-		},
-		{
-		firstName : 'chakib',
-		lastName : 'DAII',
-		email : 'chakib@DAII.com',
-		drinkPreference : 'Beer',
-		hobbies :[
-		'coder',
-		'reading'
-		]
-
+      firstName : 'user',
+      lastName : 'user',
+      email : 'user@mail.com',
+      drinkPreference : 'Coke',
+      hobbies :[
+        'coder',
+        'reading'
+      ]
 		}
 	];
 	userSubject = new Subject<User[]>();
 
 	constructor(private httpClient : HttpClient){}
-	
+
 	emitUsers(){
 	this.userSubject.next(this.users.slice());
 	}
@@ -62,7 +60,7 @@ export class UserService{
      			 (response)=>{
       				  console.log('chargement reussie ! ');
       				  this.users = response;
-      				  this.emitUsers(); 
+      				  this.emitUsers();
       				},
      			 (error)=>{
        				 console.log('erreur de chargement ! '+error);
